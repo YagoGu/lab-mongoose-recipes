@@ -41,6 +41,12 @@ mongoose
     
     //iteration 4
     await Recipe.findOneAndUpdate({title : "Rigatoni alla Genovese"}, {duration : 100}, {new : true})
+
+    //iteration 5
+    await Recipe.deleteOne({ title: "Carrot Cake" })
+
+    //iteration 6
+    await mongoose.connection.close()
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
