@@ -5,7 +5,7 @@ const Recipe = require('./models/Recipe.model');
 // Import of the data from './data.json'
 const data = require('./data');
 
-const MONGODB_URI = 'mongodb+srv://YagoGu:12345@cluster0.o829aei.mongodb.net/MyFirstDatabase';
+const MONGODB_URI = 'mongodb+srv://YagoGu:*****@cluster0.o829aei.mongodb.net/MyFirstDatabase';
 
 // Connection to the database "recipe-app"
 mongoose
