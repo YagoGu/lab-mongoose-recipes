@@ -18,7 +18,7 @@ mongoose
   .then(async () => {
     // Run your code here, after you have insured that the connection was made
     //Iteration 2
-    Recipe.create({
+    await Recipe.create({
       title: "Creamy Garlic Parmesan Pasta",
       level: "Easy Peasy",
       ingredients: [
@@ -35,15 +35,31 @@ mongoose
       duration: 20,
       creator: "Your mom"}
     )
-    
+
+    console.log(await Recipe.find({title: "Creamy Garlic Parmesan Pasta"}).select("title"))
+
     //iteration 3
     await Recipe.insertMany(data)
+
+    console.log(await Recipe.find().select("title"))
     
     //iteration 4
     await Recipe.findOneAndUpdate({title : "Rigatoni alla Genovese"}, {duration : 100}, {new : true})
+    .then(() => {
+      console.log("Rigatoni updated succesfully")
+    })
+    .catch(error => {
+      console.error('Error updating Rigatoni', error);
+    })
 
     //iteration 5
     await Recipe.deleteOne({ title: "Carrot Cake" })
+    .then(() => {
+      console.log("Carrot Cake deleted succesfully")
+    })
+    .catch(error => {
+      console.error('Error deleting Carrot Cake', error);
+    })
 
     //iteration 6
     await mongoose.connection.close()
