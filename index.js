@@ -15,8 +15,9 @@ mongoose
     // Before adding any recipes to the database, let's remove all existing ones
     return Recipe.deleteMany()
   })
-  .then(() => {
+  .then(async () => {
     // Run your code here, after you have insured that the connection was made
+    //Iteration 2
     Recipe.create({
       title: "Creamy Garlic Parmesan Pasta",
       level: "Easy Peasy",
@@ -34,7 +35,13 @@ mongoose
       duration: 20,
       creator: "Your mom"}
     )
+    
+    //iteration 3
+    await Recipe.insertMany(data)
+    
+    //iteration 4
+    await Recipe.findOneAndUpdate({title : "Rigatoni alla Genovese"}, {duration : 100}, {new : true})
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
-  });
+  })
